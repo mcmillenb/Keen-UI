@@ -5,7 +5,7 @@
 </template>
 
 <script>
-import tippy from 'tippy.js/esm';
+import tippy from 'tippy.js/dist/tippy.esm';
 import { resolveRef } from './helpers/element-ref';
 import { oneOf, tippyTrigger, tippyPosition, ref } from './prop-validation';
 
