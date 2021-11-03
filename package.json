@@ -43,11 +43,11 @@
   },
   "homepage": "https://github.com/JosephusPaye/Keen-UI/",
   "dependencies": {
-    "autosize": "^5.0.1",
-    "deepmerge": "^4.2.2",
+    "autosize": "^3.0.20",
+    "deepmerge": "^2.0.1",
     "fuzzysearch": "^1.0.3",
     "lodash.debounce": "^4.0.8",
-    "tippy.js": "^6.3.3"
+    "tippy.js": "^4.2.1"
   },
   "devDependencies": {
     "@babel/core": "^7.16.0",

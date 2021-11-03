@@ -13,7 +13,7 @@
 </template>
 
 <script>
-import tippy from 'tippy.js/dist/tippy.esm';
+import tippy from 'tippy.js/esm';
 
 import classlist from './helpers/classlist';
 import { resolveRef } from './helpers/element-ref';
