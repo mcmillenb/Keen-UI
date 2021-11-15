@@ -1,8 +1,8 @@
-import React from 'react';
-import { addons, types } from '@storybook/addons';
-import { useParameter } from '@storybook/api';
-import { AddonPanel } from '@storybook/components';
-import { SyntaxHighlighter } from '@storybook/components';
+const React = require('react');
+const { addons, types } = require('@storybook/addons');
+const { useParameter } = require('@storybook/api');
+const { AddonPanel } = require('@storybook/components');
+const { SyntaxHighlighter } = require('@storybook/components');
 
 const ADDON_ID = 'vueStorySource';
 const PARAM_KEY = 'source';

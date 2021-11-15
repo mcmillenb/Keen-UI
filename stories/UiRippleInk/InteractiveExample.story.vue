@@ -19,8 +19,9 @@
 
 <script>
 import dedent from 'dedent-js';
+import { propToOption } from '../utils';
 
-import Example, { propToOption } from '../Example.vue';
+import Example from '../Example.vue';
 import UiRippleInk from '../../src/UiRippleInk.vue';
 
 export default {

@@ -57,8 +57,9 @@
 
 <script>
 import dedent from 'dedent-js';
+import { makeComponentOptions } from '../utils';
 
-import Example, { makeComponentOptions } from '../Example.vue';
+import Example from '../Example.vue';
 import UiPopover from '../../src/UiPopover.vue';
 
 export default {

@@ -35,7 +35,7 @@ export default {
         name: String,
         label: String,
         tabindex: [String, Number],
-        value: {
+        modelValue: {
             type: [Number, String],
             required: true,
         },
@@ -79,13 +79,13 @@ export default {
         },
 
         isChecked() {
-            return this.value === this.trueValue;
+            return this.modelValue === this.trueValue;
         },
     },
 
     created() {
         if (this.checked) {
-            this.$emit('input', this.trueValue);
+            this.$emit('update:modelValue', this.trueValue);
         }
     },
 
@@ -96,7 +96,7 @@ export default {
 
         toggleCheck() {
             if (!this.disabled) {
-                this.$emit('input', this.trueValue);
+                this.$emit('update:modelValue', this.trueValue);
             }
         },
 

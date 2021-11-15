@@ -14,6 +14,8 @@
                     <ui-switch
                         v-if="option.type === Boolean"
                         v-model="options[optionName].value"
+                        :value="options[optionName].value"
+                        @input="onOptionInput(optionName, $event)"
                     >
                         {{ prettyName(optionName) }}
                     </ui-switch>
@@ -21,30 +23,38 @@
                         <ui-radio-group
                             v-if="option.options.length < 4"
                             v-model="options[optionName].value"
+                            :value="options[optionName].value"
                             :name="optionName"
                             :label="prettyName(optionName)"
                             :options="option.options"
+                            @input="onOptionInput(optionName, $event)"
                         ></ui-radio-group>
 
                         <ui-select
                             v-else
                             v-model="options[optionName].value"
+                            :value="options[optionName].value"
                             :label="prettyName(optionName)"
                             :options="option.options"
+                            @input="onOptionInput(optionName, $event)"
                         ></ui-select>
                     </template>
 
                     <ui-textbox
                         v-else-if="option.type === String"
                         v-model="options[optionName].value"
+                        :value="options[optionName].value"
                         :label="prettyName(optionName)"
+                        @input="onOptionInput(optionName, $event)"
                     ></ui-textbox>
 
                     <ui-textbox
                         v-else-if="option.type === Number"
                         v-model.number="options[optionName].value"
+                        :value="options[optionName].value"
                         :label="prettyName(optionName)"
                         type="number"
+                        @input="onOptionInput(optionName, $event)"
                     ></ui-textbox>
 
                     <div v-else>Unknown type: {{ optionName }}</div>
@@ -73,69 +83,6 @@ import UiRadioGroup from '../src/UiRadioGroup.vue';
 import UiSelect from '../src/UiSelect.vue';
 import UiSwitch from '../src/UiSwitch.vue';
 import UiTextbox from '../src/UiTextbox.vue';
-
-/**
- * Convert a component's props definition to an options object for use
- * in the interactive example options section.
- *
- * @param  {Object} Component    A component options object
- * @param  {Array}  includeProps Array of props to include. Includes all props when empty.
- */
-export function makeComponentOptions(Component, includeProps = []) {
-    const options = {};
-
-    Object.keys(Component.props).forEach(key => {
-        if (includeProps.length > 0 && includeProps.indexOf(key) === -1) {
-            return;
-        }
-
-        const prop = Component.props[key];
-        const isOneOf = prop.$meta && prop.$meta.oneOf;
-
-        const option = {
-            type: isOneOf ? 'one-of' : prop.type,
-            value: prop.default,
-            prop,
-        };
-
-        if (isOneOf) {
-            option.options = prop.$meta.oneOf;
-        }
-
-        options[key] = option;
-    });
-
-    return options;
-}
-
-/**
- * Convert a single prop definition to an option object for use
- * in the interactive example options section.
- *
- * @param  {Object} prop            The prop definition
- * @param  {String} defaultFallback The default value to use if the prop has no default
- */
-export function propToOption(prop, defaultFallback = '') {
-    const propDef =
-        typeof prop === 'object' && !Array.isArray(prop)
-            ? prop
-            : { type: prop };
-
-    if (
-        propDef.type === String ||
-        propDef.type === Number ||
-        propDef.type === Boolean ||
-        Array.isArray(propDef.type)
-    ) {
-        return {
-            type: propDef.type,
-            value: propDef.default || defaultFallback,
-            prop: propDef,
-        };
-    } else {
-        throw new Error('Unhandled prop type: ' + propDef.type);
-    }
-}
 
 export default {
     name: 'Example',
@@ -220,6 +167,14 @@ export default {
     },
 
     methods: {
+        onOptionInput(optionName, event) {
+            console.log({ optionName, event });
+            if (!event.returnValue) {
+                // eslint-disable-next-line vue/no-mutating-props
+                this.options[optionName].value = event;
+            }
+        },
+
         setCopyButtonLabel(label) {
             this.copyButtonLabel = label;
 

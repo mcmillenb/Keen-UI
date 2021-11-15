@@ -58,7 +58,7 @@ export default {
             type: Array,
             required: true,
         },
-        value: {
+        modelValue: {
             type: [Number, String],
             required: true,
         },
@@ -102,8 +102,8 @@ export default {
     data() {
         return {
             isActive: false,
-            initialValue: this.value,
-            selectedOptionValue: this.value,
+            initialValue: this.modelValue,
+            selectedOptionValue: this.modelValue,
         };
     },
 
@@ -137,18 +137,18 @@ export default {
 
     watch: {
         selectedOptionValue() {
-            this.$emit('input', this.selectedOptionValue);
+            this.$emit('update:modelValue', this.selectedOptionValue);
             this.$emit('change', this.selectedOptionValue);
         },
 
-        value() {
-            this.selectedOptionValue = this.value;
+        modelValue() {
+            this.selectedOptionValue = this.modelValue;
         },
     },
 
     methods: {
         reset() {
-            this.$emit('input', this.initialValue);
+            this.$emit('update:modelValue', this.initialValue);
         },
 
         isOptionCheckedByDefault(option) {

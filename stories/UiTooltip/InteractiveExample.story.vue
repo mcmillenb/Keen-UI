@@ -25,8 +25,9 @@
 
 <script>
 import dedent from 'dedent-js';
+import { makeComponentOptions } from '../utils';
 
-import Example, { makeComponentOptions } from '../Example.vue';
+import Example from '../Example.vue';
 import UiTooltip from '../../src/UiTooltip.vue';
 
 export default {

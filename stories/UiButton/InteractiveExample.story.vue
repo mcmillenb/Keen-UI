@@ -178,8 +178,9 @@
 
 <script>
 import dedent from 'dedent-js';
+import { makeComponentOptions, propToOption } from '../utils';
 
-import Example, { makeComponentOptions, propToOption } from '../Example.vue';
+import Example from '../Example.vue';
 import UiButton from '../../src/UiButton.vue';
 import UiIcon from '../../src/UiIcon.vue';
 

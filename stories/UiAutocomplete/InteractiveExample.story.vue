@@ -48,8 +48,9 @@
 
 <script>
 import dedent from 'dedent-js';
+import { makeComponentOptions, propToOption } from '../utils';
 
-import Example, { makeComponentOptions, propToOption } from '../Example.vue';
+import Example from '../Example.vue';
 import UiAutocomplete from '../../src/UiAutocomplete.vue';
 import UiIcon from '../../src/UiIcon.vue';
 

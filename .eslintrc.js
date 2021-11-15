@@ -16,8 +16,14 @@ module.exports = {
             },
         ],
         'vue/require-default-prop': 'off', // TODO: enable this later
+        'vue/multi-word-component-names': [
+            'error',
+            {
+                ignores: ['Basic', 'Example', 'Dismissible', 'Persistent', 'Disabled'],
+            },
+        ],
     },
     parserOptions: {
-        parser: 'babel-eslint',
+        parser: '@babel/eslint-parser',
     },
 };

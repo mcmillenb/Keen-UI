@@ -54,7 +54,9 @@
 </template>
 
 <script>
-import Example, { makeComponentOptions, propToOption } from '../Example.vue';
+import { makeComponentOptions, propToOption } from '../utils';
+
+import Example from '../Example.vue';
 import UiAlert from '../../src/UiAlert.vue';
 import UiButton from '../../src/UiButton.vue';
 
